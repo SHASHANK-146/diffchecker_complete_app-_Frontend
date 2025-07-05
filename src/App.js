@@ -28,7 +28,8 @@ function App() {
       setMessage('');
       setSuccess(false);
 
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      // ✅ FIXED: Use deployed backend URL
+      const response = await axios.post('https://diffchecker-complete-app-backend-1.onrender.com/upload', formData, {
         responseType: 'blob',
       });
 
