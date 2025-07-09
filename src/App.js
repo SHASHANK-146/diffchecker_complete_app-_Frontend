@@ -28,13 +28,9 @@ function App() {
       setMessage('');
       setSuccess(false);
 
-      const response = await axios.post(
-        'https://diffchecker-complete-app-backend-1.onrender.com/upload',
-        formData,
-        {
-          responseType: 'blob',
-        }
-      );
+      const response = await axios.post('https://diffchecker-complete-app-backend-1.onrender.com/upload', formData, {
+        responseType: 'blob'
+      });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
@@ -44,12 +40,10 @@ function App() {
       link.click();
       link.remove();
 
-      // Reset input fields
       inputRef.current.value = '';
       bankRef.current.value = '';
       setInputFile(null);
       setBankFile(null);
-
       setMessage('✅ Report download started');
       setSuccess(true);
     } catch (err) {
@@ -70,19 +64,11 @@ function App() {
       <div className="form-grid">
         <div>
           <label>Input Statement</label>
-          <input
-            type="file"
-            ref={inputRef}
-            onChange={(e) => setInputFile(e.target.files[0])}
-          />
+          <input type="file" ref={inputRef} onChange={(e) => setInputFile(e.target.files[0])} />
         </div>
         <div>
           <label>Bank Statement</label>
-          <input
-            type="file"
-            ref={bankRef}
-            onChange={(e) => setBankFile(e.target.files[0])}
-          />
+          <input type="file" ref={bankRef} onChange={(e) => setBankFile(e.target.files[0])} />
         </div>
         <div className="button-wrapper">
           <button onClick={handleUpload} disabled={loading}>
@@ -91,19 +77,8 @@ function App() {
         </div>
       </div>
 
-      {loading && (
-        <div className="progress-bar">
-          <div className="progress"></div>
-        </div>
-      )}
-
-      {success && (
-        <div className="success-animation">
-          <div className="checkmark">&#10004;</div>
-          <p className="message success">{message}</p>
-        </div>
-      )}
-
+      {loading && <div className="progress-bar"><div className="progress"></div></div>}
+      {success && <p className="message success">{message}</p>}
       {!success && !loading && <p className="message">{message}</p>}
     </div>
   );
