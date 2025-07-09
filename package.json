@@ -7,7 +7,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "react-scripts": "5.0.1", 
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -36,5 +36,10 @@
   },
   "engines": {
     "node": "18"
-  }
+  },
+  "description": "<<<<<<< HEAD\r # diffchecker_complete_app-_Frontend\r =======\r # Getting Started with Create React App",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

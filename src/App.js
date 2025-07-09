@@ -28,10 +28,13 @@ function App() {
       setMessage('');
       setSuccess(false);
 
-      // ✅ FIXED: Use deployed backend URL
-      const response = await axios.post('https://diffchecker-complete-app-backend-1.onrender.com/upload', formData, {
-        responseType: 'blob',
-      });
+      const response = await axios.post(
+        'https://diffchecker-complete-app-backend-1.onrender.com/upload',
+        formData,
+        {
+          responseType: 'blob',
+        }
+      );
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
@@ -67,11 +70,19 @@ function App() {
       <div className="form-grid">
         <div>
           <label>Input Statement</label>
-          <input type="file" ref={inputRef} onChange={(e) => setInputFile(e.target.files[0])} />
+          <input
+            type="file"
+            ref={inputRef}
+            onChange={(e) => setInputFile(e.target.files[0])}
+          />
         </div>
         <div>
           <label>Bank Statement</label>
-          <input type="file" ref={bankRef} onChange={(e) => setBankFile(e.target.files[0])} />
+          <input
+            type="file"
+            ref={bankRef}
+            onChange={(e) => setBankFile(e.target.files[0])}
+          />
         </div>
         <div className="button-wrapper">
           <button onClick={handleUpload} disabled={loading}>
@@ -80,7 +91,11 @@ function App() {
         </div>
       </div>
 
-      {loading && <div className="progress-bar"><div className="progress"></div></div>}
+      {loading && (
+        <div className="progress-bar">
+          <div className="progress"></div>
+        </div>
+      )}
 
       {success && (
         <div className="success-animation">
